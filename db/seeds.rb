@@ -6,15 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-sleeping = Category.create(name: 'Sleeping')
-bathroom = Category.create(name: 'Bathroom')
-kitchen = Category.create(name: 'Kitchen')
-warm_clothes = Category.create(name: 'Warm Clothes')
-clothes = Category.create(name: 'Clothes')
-other_gear = Category.create(name: 'Other Gear')
-food_sugestions = Category.create(name: 'Food Sugestions')
-basecamp = Category.create(name: 'Base Camp')
-beverages = Category.create(name: 'Beverages')
+first_template = List.create(title: 'First Template')
+
+sleeping = Category.create(name: 'Sleeping', list: first_template)
+bathroom = Category.create(name: 'Bathroom', list: first_template)
+kitchen = Category.create(name: 'Kitchen', list: first_template)
+warm_clothes = Category.create(name: 'Warm Clothes', list: first_template)
+clothes = Category.create(name: 'Clothes', list: first_template)
+other_gear = Category.create(name: 'Other Gear', list: first_template)
+food_sugestions = Category.create(name: 'Food Sugestions', list: first_template)
+basecamp = Category.create(name: 'Base Camp', list: first_template)
+beverages = Category.create(name: 'Beverages', list: first_template)
 
 
 Item.create(name: "Tent", packed: true, category: sleeping)
