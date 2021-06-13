@@ -6,17 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-first_template = List.create(title: 'First Template')
+happy_camper = User.create(name: "Happy Camper")
 
-sleeping = Category.create(name: 'Sleeping', list: first_template)
-bathroom = Category.create(name: 'Bathroom', list: first_template)
-kitchen = Category.create(name: 'Kitchen', list: first_template)
-warm_clothes = Category.create(name: 'Warm Clothes', list: first_template)
-clothes = Category.create(name: 'Clothes', list: first_template)
-other_gear = Category.create(name: 'Other Gear', list: first_template)
-food_sugestions = Category.create(name: 'Food Sugestions', list: first_template)
-basecamp = Category.create(name: 'Base Camp', list: first_template)
-beverages = Category.create(name: 'Beverages', list: first_template)
+template_list = List.create(title: 'Template List', user: happy_camper)
+
+sleeping = Category.create(name: 'Sleeping', list: template_list)
+bathroom = Category.create(name: 'Bathroom', list: template_list)
+kitchen = Category.create(name: 'Kitchen', list: template_list)
+warm_clothes = Category.create(name: 'Warm Clothes', list: template_list)
+clothes = Category.create(name: 'Clothes', list: template_list)
+other_gear = Category.create(name: 'Other Gear', list: template_list)
+food_sugestions = Category.create(name: 'Food Sugestions', list: template_list)
+basecamp = Category.create(name: 'Base Camp', list: template_list)
+beverages = Category.create(name: 'Beverages', list: template_list)
 
 
 Item.create(name: "Tent", packed: true, category: sleeping)
