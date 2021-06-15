@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, only: [:show, :update, :destroy]
 
   def index
     items = Item.all
@@ -37,10 +36,6 @@ class ItemsController < ApplicationController
   end
 
   private
-    # def set_item
-    #   item = Item.find(params[:id])
-    # end
-
     def item_params
       params.require(:item).permit(:name, :description, :category_id)
     end
