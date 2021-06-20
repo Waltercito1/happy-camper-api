@@ -21,6 +21,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    byebug
     list = List.find(params[:id])
     if list.update(list_params)
       render json: list
@@ -36,6 +37,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title, :user_id)
+      params.require(:list).permit(:title, :user_id, :categories)
     end
 end
