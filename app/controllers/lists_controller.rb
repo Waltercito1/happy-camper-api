@@ -21,7 +21,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    byebug
     list = List.find(params[:id])
     if list.update(list_params)
       render json: list
