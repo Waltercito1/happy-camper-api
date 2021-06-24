@@ -27,11 +27,19 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     #list.categories = Category.all
+    # byebug
+    params[:categories_attributes].each do |cat|
+      # byebug
+      Category.create(cat.permit(:name, :list_id))
+    end
+    params[:items_attributes].each do |item|
+      # byebug
+      name = Category.find(item[:category_id]).name
+      list_category = list.categories.find_by(name: name)
+      item[:category_id] = list_category.id
+      Item.create(item.permit(:name, :packed, :category_id))
+    end
     if list.update(list_params)
-      params[:list_items_attributes].each do |item|
-        list.items << Item.create(item.permit(:name, :packed, :category_id))
-        byebug
-      end
       render json: list
     else
       render json: list.errors, status: :unprocessable_entity
@@ -45,7 +53,7 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title, :user_id, :categories, list_items_attributes:[:name, :packed, :category_id])
+      params.require(:list).permit(:title, :user_id, categories_attributes: [:name, :list_id], items_attributes:[:name, :packed, :category_id])
     end
 
     def item_params
