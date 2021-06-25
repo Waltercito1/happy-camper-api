@@ -12,6 +12,11 @@ class ListsController < ApplicationController
 
   def create
     list = List.new(list_params)
+    #list.categories = Category.all
+    # Category.all.each do | category |
+    #   Category.create(name: category.name, list: list)
+    # end
+    #byebug
     if list.save
       render json: list, status: :created, location: list
     else
@@ -21,14 +26,18 @@ class ListsController < ApplicationController
 
   def update
     list = List.find(params[:id])
+    #list.categories = Category.all
+    #byebug
     params[:categories_attributes].each do |cat|
-      Category.find_or_create_by(cat.permit(:name, :list_id))
+      # byebug
+      Category.create(cat.permit(:name, :list_id))
     end
     params[:items_attributes].each do |item|
+      # byebug
       name = Category.find(item[:category_id]).name
       list_category = list.categories.find_by(name: name)
       item[:category_id] = list_category.id
-      Item.find_or_create_by(item.permit(:name, :packed, :category_id))
+      Item.create(item.permit(:name, :packed, :category_id))
     end
     if list.update(list_params)
       render json: list
