@@ -11,7 +11,7 @@ git clone https://git@github.com:Waltercito1/happy-camper-api.git
 
 CD into the directory and run ```bundle install```.
 
-Then run ```rails db:create```, ```rails db:migrate```, and ```rake db:seed```. 
+Then run ```rails db:create```, ```rails db:migrate```, and ```rails db:seed```. 
 
 After that you will need to start the server by running ```rails s```
 
